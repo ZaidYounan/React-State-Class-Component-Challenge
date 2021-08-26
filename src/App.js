@@ -5,6 +5,9 @@ class App extends Component {
         super(props)
         // code here
         // This binding is necessary to make `this` work in the callback
+        this.state = { 
+          songList : ["Despacito", "Summer Of 69", "Hotel California", "Single Ladies", "If I were a boy", "Run the World", "Waka Waka"]
+        };
         this.handleClick = this.handleClick.bind(this);
         this.filterSongs = this.filterSongs.bind(this);
       }
@@ -24,7 +27,7 @@ class App extends Component {
                     <input type="text" onChange={this.filterSongs} />
                     <input type="submit" value="Filter" />
             </form>
-            {/* list songs here */}
+            {this.state.songList.map( person => <p>{person}</p>)}
           </div>
 
         )
