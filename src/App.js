@@ -17,7 +17,7 @@ class App extends Component {
 
       filterSongs(song) {
         this.setState({
-          songInput: song.target.value
+          songInput: song.target.value.toUpperCase()
         })
       }
 
@@ -30,7 +30,9 @@ class App extends Component {
 
       render() {
 
-        const songInput = this.state.songList.filter(song => {
+        const upperCaseList = this.state.songList.map(string => string.toUpperCase());
+
+        const songInput = upperCaseList.filter(song => {
           return song.includes(this.state.songInput)
         });
 
