@@ -1,33 +1,47 @@
 import React, {Component} from "react";
+import "./App.css";
 
 class App extends Component {
-      constructor(props){
+      constructor(props) {
         super(props)
         // code here
         // This binding is necessary to make `this` work in the callback
         this.state = { 
+          songInput:'',
           songList : ["Despacito", "Summer Of 69", "Hotel California", "Single Ladies", "If I were a boy", "Run the World", "Waka Waka"]
         };
         this.handleClick = this.handleClick.bind(this);
         this.filterSongs = this.filterSongs.bind(this);
       }
 
-      handleClick(){
-        // code here
+
+      filterSongs(song) {
+        this.setState({
+          songInput: song.target.value
+        })
       }
 
-      filterSongs(){
-        // code here
+      /* first try watching videos, then if needed google 
+      how to setState and filter array */
+
+      handleClick(event) {
+        event.preventDefault();
       }
-      render(){
+
+      render() {
+
+        const songInput = this.state.songList.filter(song => {
+          return song.includes(this.state.songInput)
+        });
+
         return(
-          <div data-testid="app" >
+          <div data-testid="app" className="container">
             <h1> SEARCH SONG </h1>
             <form onSubmit={this.handleClick}>
                     <input type="text" onChange={this.filterSongs} />
                     <input type="submit" value="Filter" />
             </form>
-            {this.state.songList.map( person => <p>{person}</p>)}
+            {songInput.map( (song) => <p>{song}</p>)}
           </div>
 
         )
