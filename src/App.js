@@ -40,8 +40,7 @@ class App extends Component {
           <div data-testid="app" className="container">
             <h1> SEARCH SONG </h1>
             <form onSubmit={this.handleClick}>
-                    <input type="text" onChange={this.filterSongs} />
-                    <input type="submit" value="Filter" />
+                    <input type="text" onChange={this.filterSongs} placeholder="Search"/>
             </form>
             {songInput.map( (song) => <p>{song}</p>)}
           </div>
